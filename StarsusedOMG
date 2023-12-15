@@ -1,0 +1,19 @@
+--// all you need to do for this script is place your crosshair close enough to the humanoid
+--// and it will automatically shoot for you
+--// hard to get caught since bypasses resolvers, antiaimviewers and everything else
+
+
+local Run = game:GetService("RunService")
+local Player = game:GetService("Players").LocalPlayer
+local Mouse = Player:GetMouse()
+local VirtualInputManager = game:GetService("VirtualInputManager")
+Run.RenderStepped:Connect(function()
+   local Target = Mouse.Target
+   if Target and Target:FindFirstAncestorOfClass("Model") then
+     local model = Target:FindFirstAncestorOfClass("Model")
+     if model:FindFirstChild("HumanoidRootPart") then
+        print('MonkeyBot')
+        mouse1click()
+     end
+   end
+end)
